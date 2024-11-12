@@ -1,4 +1,8 @@
 1. hacer apuesta inicial
 2. El crupier repartirá dos cartas a cada jugador, incluyéndose a sí mismo. Una de las cartas del crupier estará boca arriba para que todos la vean.
-3. Ahora es su turno para actuar. Dependiendo de sus cartas, puede decidir si quiere "pedir" (solicitar otra carta), "plantarse" (no solicitar más cartas), "doblar" (duplicar su apuesta y recibir una sola carta adicional) o "dividir" (si sus dos primeras cartas tienen el mismo valor, puede dividirlas en dos manos separadas, haciendo una segunda apuesta igual a la primera).
-4.Una vez que todos los jugadores han tenido su turno, el crupier muestra su segunda carta. Si el total de sus cartas es 16 o menos, debe pedir otra carta. Si es 17 o más, debe plantarse. Si el crupier se pasa de 21, todos los jugadores que aún están en juego ganan. Si el crupier no se pasa de 21, los jugadores con un total de cartas mayor que el del crupier ganan, en cualquier otro caso, pierden.
+3. Ahora es su turno para actuar. Dependiendo de sus cartas, puede decidir si quiere "pedir" (solicitar otra carta), "plantarse" (no solicitar más cartas), 
+"doblar" (duplicar su apuesta y recibir una sola carta adicional) o "dividir" (si sus dos primeras cartas tienen el mismo valor, puede dividirlas en dos 
+manos separadas, haciendo una segunda apuesta igual a la primera).
+4.Una vez que todos los jugadores han tenido su turno, el crupier muestra su segunda carta. Si el total de sus cartas es 16 o menos, debe pedir otra carta.
+Si es 17 o más, debe plantarse. Si el crupier se pasa de 21, todos los jugadores que aún están en juego ganan. Si el crupier no se pasa de 21, los jugadores
+con un total de cartas mayor que el del crupier ganan, en cualquier otro caso, pierden.
