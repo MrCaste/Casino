@@ -19,7 +19,7 @@ public class Player {
         this.alias = alias;
     }
 
-    public void apostar(int bet) throws Exception{
+    public void bet(int bet) throws Exception{
         if(this.chips < bet){
             throw new Exception("The bet exceeds your amount");
         }
