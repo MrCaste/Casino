@@ -20,14 +20,14 @@ public class Deck {
             return NUMBER.index+STICK.index;
         }
 
-        public int getValor(String valor){
-            switch(valor){
+        public int getValor(){
+            switch(NUMBER.index){
                 case "A":
                     return 11;
                 case "J","Q","K":
                     return 10;
                 default:
-                    return Integer.parseInt(valor);
+                    return Integer.parseInt(NUMBER.index);
             }
         }
     }
@@ -37,6 +37,7 @@ public class Deck {
     }
 
     public List<Card> createDeck(){
+        deck.clear();
         for (Stick STICK : Stick.values()) {
             for (Number NUMBER : Number.values()) {
                 deck.add(new Card(NUMBER, STICK));
