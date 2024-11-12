@@ -32,7 +32,7 @@ public class Deck {
         }
     }
 
-    public Deck(Card carta) {
+    public Deck() {
         deck = new LinkedList<>();
     }
 
