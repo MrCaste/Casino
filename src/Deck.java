@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Deck {
 
-    private List<Card> deck;
+    private List<Card> deck = new LinkedList<>();
 
     class Card{
         final Number NUMBER;
@@ -17,7 +17,7 @@ public class Deck {
 
         @Override
         public String toString() {
-            return NUMBER.index+STICK.index;
+            return "" + NUMBER.index + STICK.index;
         }
 
         public int getValor(){
@@ -32,15 +32,11 @@ public class Deck {
         }
     }
 
-    public Deck() {
-        deck = new LinkedList<>();
-    }
-
     public List<Card> createDeck(){
         deck.clear();
-        for (Stick STICK : Stick.values()) {
-            for (Number NUMBER : Number.values()) {
-                deck.add(new Card(NUMBER, STICK));
+        for (Stick stick : Stick.values()) {
+            for (Number number : Number.values()) {
+                deck.add(new Card(number, stick));
             }
         }
         return deck;

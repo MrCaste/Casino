@@ -1,14 +1,15 @@
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.List;
-import java.util.Scanner;
 
 public class Player {
 
     private Deck deck;
     private String alias;
     private int chips;
+    private int bet;
+    private boolean Divide = false;
     private List<Deck.Card> hand = new ArrayList<>();
+    private List<Deck.Card> hand2 = new ArrayList<>();
     private final int MINIMUM_BET = 5;
 
 
@@ -27,76 +28,80 @@ public class Player {
         }
         if(this.chips > bet){
             this.chips -= bet;
+            this.bet = bet;
         }
         if(bet < MINIMUM_BET){
             throw new Exception("The minimum bet is: "+MINIMUM_BET);
         }
     }
 
-    public List<Deck.Card> addCardToHand(){
+    public List<Deck.Card> addCardToHand(Deck deck){
         hand.add(deck.stealCard());
         return hand;
     }
 
     @Override
     public String toString() {
-        return alias + "[" + hand + "]" + chips +" chips";
-    }
-
-    public Player createPlayer(){
-        Scanner scanAlias = new Scanner(System.in);
-        boolean correct = false;
-        do {
-            try (scanAlias){
-                insertAlias();
-                insertChips();
-                Player player = new Player(alias, chips);
-                correct = true;
-                return player;
-            } catch (InputMismatchException e) {
-                System.out.println("Error: nick name or chips are incorrect");
-            }
-        } while (!correct);
-        throw new InputMismatchException();
-    }
-
-    public Player createCrupier(){
-        Player crupier = new Player("Crupier");
-        return crupier;
-    }
-
-    public String insertAlias(){
-        try (Scanner scanAlias = new Scanner(System.in)) {
-            System.out.print("Insert your nick name: ");
-            String alias = scanAlias.nextLine();
-            return alias;
+        if(Divide){
+            return alias + " Hand 1 [" + hand + "]" + " Hand 2 [" + hand2 + "]" + "chips: " + chips;
         }
-    }
-
-    public int insertChips(){
-        try (Scanner scanAlias = new Scanner(System.in)) {
-            System.out.print("Insert your amount of chips: ");
-            int chips = scanAlias.nextInt();
-            return chips;
-        }
+        return alias + "[" + hand + "]" + "bet: " + bet;
     }
 
     public List<Deck.Card> getHand() {
         return hand;
     }
 
+    public List<Deck.Card> getHand2() {
+        return hand2;
+    }
+
+    public boolean isDivide(){
+        if(Divide){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public void setHand(List<Deck.Card> hand) {
         this.hand = hand;
+    }
+
+    public void turnOffDivide() {
+        this.Divide = false;
+    }
+
+    public void win(){
+        this.chips += (this.bet * 2);
+        this.bet = 0;
+    }
+
+    public void lose(){
+        this.bet = 0;
     }
 
     public int handSum(List<Deck.Card> hand){
         int valor = 0;
         for (int i = 0; i < hand.size(); i++) {
-            valor =+ hand.get(i).getValor();
+            valor += hand.get(i).getValor();
         }
         return valor;
     }
 
-    
+    public void doubleBet(){
+        try {
+            bet(this.bet);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public String divideHand(List<Deck.Card> hand){
+        Divide = true;
+        hand2.add(hand.remove(1));
+        hand2.add(deck.stealCard());
+        return alias + " Mano2 [" + hand2 + "]";
+    }
 
 }
