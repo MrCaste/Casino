@@ -8,15 +8,6 @@ public class BlackJack {
     private Deck deck = new Deck();
     Scanner console = new Scanner(System.in);
 
-    /*
-    public static String getMessage() {
-        Scanner console = new Scanner(System.in);
-        String message = null;
-        message = console.nextLine();
-        return message;
-    }
-    */
-
     public void sortDeck(){
         deck.createDeck();
         System.out.println(deck.toString());
