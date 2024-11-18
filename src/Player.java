@@ -35,10 +35,14 @@ public class Player {
         }
     }
 
-    public List<Deck.Card> addCardToHand(Deck deck){
+    public void addCardToHand(Deck deck){
         hand.add(deck.stealCard());
-        return hand;
     }
+
+    public void addCardToHand2(Deck deck){
+        hand2.add(deck.stealCard());
+    }
+    
 
     @Override
     public String toString() {
@@ -46,6 +50,10 @@ public class Player {
             return alias + " Hand 1 [" + hand + "]" + " Hand 2 [" + hand2 + "]" + "chips: " + chips;
         }
         return alias + "[" + hand + "]" + "bet: " + bet;
+    }
+
+    public String toStringCrupier() {
+        return alias + "[" + hand + "]";
     }
 
     public List<Deck.Card> getHand() {

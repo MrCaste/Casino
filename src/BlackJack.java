@@ -158,31 +158,63 @@ public class BlackJack {
 
     public void phaseThree(Player player){
         boolean exit = false;
+        boolean exitDivide = false;
+        boolean divide = false;
         do {
             System.out.print("\n1. Pedir carta.  ");
             System.out.print("2. Plantarse.  ");
             System.out.print("3. Doblar apuesta.  ");
-            System.out.print("4. Dividir.");
+            System.out.print("4. Dividir.  : ");
             int opcion = Integer.parseInt(console.nextLine());
             switch (opcion) {
                 case 1:
+                    if(divide){
+                            do {
+                                System.out.println("\nMano?");
+                                System.out.print("1. Mano 1.  ");
+                                System.out.print("2. Mano 2.  ");
+                                System.out.print("3. Ambas.  ");
+                                System.out.print("4. Volver.  : ");
+                                int opcionDivide = Integer.parseInt(console.nextLine());
+                                switch (opcionDivide) {
+                                    case 1:
+                                        player.addCardToHand(deck);
+                                        exitDivide = true;
+                                        break;
+                                    case 2:
+                                        player.addCardToHand2(deck);
+                                        exitDivide = true;
+                                        break;
+                                    case 3:
+                                        player.addCardToHand(deck);
+                                        player.addCardToHand2(deck);
+                                        exitDivide = true;
+                                        break;
+                                    case 4:
+                                        exitDivide = true;
+                                        break;
+                                    default:
+                                        System.err.println("\n\nOpcion no valida, por favor, seleccione una opcion correcta: ");
+                                        break;
+                                } 
+                            } while (!exitDivide);
+                    }else{
+                        player.addCardToHand(deck);
+                    }
                     player.addCardToHand(deck);
-                    exit = true;
                     break;
                 case 2:
                     exit = true;
                     break;
                 case 3:
-                    exit = true;
                     player.doubleBet();
                     break;
                 case 4:
-                    if(player.getHand().get(0).equals(player.getHand().get(1))){
-                        player.divideHand(player.getHand());
+                    if(player.getHand().get(0).getValor() == (player.getHand().get(1).getValor())){
+                        System.out.println(player.divideHand(player.getHand()));
                         player.doubleBet();
                         player.addCardToHand(deck);
                         System.out.println(" Mano1 [" + player.getHand() + "]");
-                        exit = true;
                     }else {
                         System.err.println("No tienes 2 cartas iguales para dividir, elije otra opcion");
                     }
@@ -195,7 +227,7 @@ public class BlackJack {
     }
 
     public void phaseFour(Player crupier, Player player){
-        System.out.println(crupier.toString() + " valor mano: " + crupier.handSum(crupier.getHand()));
+        System.out.println(crupier.toStringCrupier() + " valor mano: " + crupier.handSum(crupier.getHand()));
         System.out.println(player.toString() + " valor mano: " + player.handSum(player.getHand()));
         if(crupier.handSum(crupier.getHand()) <= 16){
             System.out.println("\nEl crupier pide carta...\n");

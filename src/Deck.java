@@ -32,14 +32,13 @@ public class Deck {
         }
     }
 
-    public List<Card> createDeck(){
+    public void createDeck(){
         deck.clear();
         for (Stick stick : Stick.values()) {
             for (Number number : Number.values()) {
                 deck.add(new Card(number, stick));
             }
         }
-        return deck;
     }
 
     public void shuffle(){
