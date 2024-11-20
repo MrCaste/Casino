@@ -6,7 +6,8 @@ public class Player {
     private Deck deck;
     private String alias;
     private int chips;
-    private int bet;
+    private int bet1;
+    private int bet2;
     private boolean Divide = false;
     private List<Deck.Card> hand = new ArrayList<>();
     private List<Deck.Card> hand2 = new ArrayList<>();
@@ -16,6 +17,8 @@ public class Player {
     public Player(String alias, int chips) {
         this.alias = alias;
         this.chips = chips;
+        this.bet1 = 0;
+        this.bet2 = 0;
     }
 
     public Player(String alias) {
@@ -24,11 +27,24 @@ public class Player {
 
     public void bet(int bet) throws Exception{
         if(this.chips < bet){
-            throw new Exception("The bet exceeds your amount");
+            throw new Exception("The bet exceeds your amount, try again");
         }
         if(this.chips > bet){
             this.chips -= bet;
-            this.bet = bet;
+            this.bet1 = bet;
+        }
+        if(bet < MINIMUM_BET){
+            throw new Exception("The minimum bet is: "+MINIMUM_BET);
+        }
+    }
+
+    public void bet2(int bet) throws Exception{
+        if(this.chips < bet){
+            throw new Exception("The bet exceeds your amount, try again");
+        }
+        if(this.chips > bet){
+            this.chips -= bet;
+            this.bet2 = bet;
         }
         if(bet < MINIMUM_BET){
             throw new Exception("The minimum bet is: "+MINIMUM_BET);
@@ -46,14 +62,15 @@ public class Player {
 
     @Override
     public String toString() {
+        int totalbet = bet1 + bet2;
         if(Divide){
             return alias + " Hand 1 [" + hand + "]" + " Hand 2 [" + hand2 + "]" + "chips: " + chips;
         }
-        return alias + "[" + hand + "]" + "bet: " + bet;
+        return alias + " " + hand + " " + "bet: " + totalbet;
     }
 
     public String toStringCrupier() {
-        return alias + "[" + hand + "]";
+        return alias + " " + hand;
     }
 
     public List<Deck.Card> getHand() {
@@ -80,13 +97,32 @@ public class Player {
         this.Divide = false;
     }
 
-    public void win(){
-        this.chips += (this.bet * 2);
-        this.bet = 0;
+    public void win1(){
+        this.chips += (this.bet1 * 2);
+        this.bet1 = 0;
     }
 
-    public void lose(){
-        this.bet = 0;
+    public void win2(){
+        this.chips += (this.bet2 * 2);
+        this.bet2 = 0;
+    }
+
+    public void lose1(){
+        this.bet1 = 0;
+    }
+
+    public void lose2(){
+        this.bet2 = 0;
+    }
+
+    public void empate1(){
+        this.chips += this.bet1;
+        this.bet1 = 0;
+    }
+
+    public void empate2(){
+        this.chips += this.bet2;
+        this.bet2 = 0;
     }
 
     public int handSum(List<Deck.Card> hand){
@@ -98,10 +134,18 @@ public class Player {
     }
 
     public void doubleBet(){
-        try {
-            bet(this.bet);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        if(isDivide()){
+            try {
+                bet2(this.bet1);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }else{
+            try {
+                bet(this.bet1);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 
@@ -111,5 +155,4 @@ public class Player {
         hand2.add(deck.stealCard());
         return alias + " Mano2 [" + hand2 + "]";
     }
-
 }
