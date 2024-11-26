@@ -50,7 +50,8 @@ public class BlackJack {
                                 break;
                         }
                     }
-                }else if(player.handSum(player.getHand2()) == 21 && player.isDivide()){
+                }
+                else if(player.handSum(player.getHand2()) == 21 && player.isDivide()){
                     System.out.println("\nEl jugador tiene BlackJack en la Mano 2!!... Desea seguir jugando? s/n");
                     player.win1();
                     while (!exit) {
@@ -68,7 +69,8 @@ public class BlackJack {
                                 break;
                         }
                     }
-                }else if(player.handSum(player.getHand()) == 21 && player.handSum(player.getHand2()) == 21 && player.isDivide()){
+                }
+                else if(player.handSum(player.getHand()) == 21 && player.handSum(player.getHand2()) == 21 && player.isDivide()){
                     System.out.println("\nEl jugador tiene BlackJack en ambas Manos!!... Desea seguir jugando? s/n");
                     player.win1();
                     while (!exit) {
@@ -86,7 +88,8 @@ public class BlackJack {
                                 break;
                         }
                     }
-                }else if(player.handSum(player.getHand()) == 21 && !player.isDivide()){
+                }
+                else if(player.handSum(player.getHand()) == 21 && !player.isDivide()){
                     System.out.println("\nEl jugador tiene BlackJack!!... Desea seguir jugando? s/n");
                     player.win1();
                     while (!exit) {
@@ -125,7 +128,8 @@ public class BlackJack {
                                 break;
                         }
                     }
-                }else if(crupier.handSum(crupier.getHand()) > 21 && player.handSum(player.getHand2()) < 21 && player.isDivide()){
+                }
+                else if(crupier.handSum(crupier.getHand()) > 21 && player.handSum(player.getHand2()) < 21 && player.isDivide()){
                     System.out.println("\nEl jugador gana en la Mano 2... Desea seguir jugando? s/n");
                     player.win2();
                     while (!exit) {
@@ -143,7 +147,8 @@ public class BlackJack {
                                 break;
                         }
                     }
-                }else if(crupier.handSum(crupier.getHand()) > 21 && player.handSum(player.getHand()) < 21 && crupier.handSum(crupier.getHand()) > 21 && player.handSum(player.getHand2()) < 21 && player.isDivide()){
+                }
+                else if(crupier.handSum(crupier.getHand()) > 21 && player.handSum(player.getHand()) < 21 && crupier.handSum(crupier.getHand()) > 21 && player.handSum(player.getHand2()) < 21 && player.isDivide()){
                     System.out.println("\nEl jugador gana en ambas Manos... Desea seguir jugando? s/n");
                     player.win2();
                     player.win1();
@@ -162,7 +167,8 @@ public class BlackJack {
                                 break;
                         }
                     }
-                }else if(crupier.handSum(crupier.getHand()) > 21 && player.handSum(player.getHand()) < 21 && !player.isDivide()){
+                }
+                else if(crupier.handSum(crupier.getHand()) > 21 && player.handSum(player.getHand()) < 21 && !player.isDivide()){
                     System.out.println("\nEl jugador gana... Desea seguir jugando? s/n");
                     player.win1();
                     while (!exit) {
@@ -202,7 +208,8 @@ public class BlackJack {
                                 break;
                         }
                     }
-                }else if(crupier.handSum(crupier.getHand()) < player.handSum(player.getHand2()) && player.handSum(player.getHand2()) < 21 && player.isDivide()){
+                }
+                else if(crupier.handSum(crupier.getHand()) < player.handSum(player.getHand2()) && player.handSum(player.getHand2()) < 21 && player.isDivide()){
                     System.out.println("\nEl jugador gana en la Mano 1... Desea seguir jugando? s/n");
                     player.win2();
                     while (!exit) {
@@ -220,7 +227,8 @@ public class BlackJack {
                                 break;
                         }
                     }
-                }else if(crupier.handSum(crupier.getHand()) > player.handSum(player.getHand()) && player.handSum(player.getHand2()) < crupier.handSum(crupier.getHand()) 
+                }
+                else if(crupier.handSum(crupier.getHand()) > player.handSum(player.getHand()) && player.handSum(player.getHand2()) < crupier.handSum(crupier.getHand()) 
                         && player.handSum(player.getHand2()) < 21 && player.handSum(player.getHand()) < 21 && player.isDivide()){
                     System.out.println("\nEl jugador gana en ambas Manos... Desea seguir jugando? s/n");
                     player.win1();
@@ -240,7 +248,8 @@ public class BlackJack {
                                 break;
                         }
                     }
-                }else if(crupier.handSum(crupier.getHand()) < player.handSum(player.getHand()) && player.handSum(player.getHand()) < 21 && !player.isDivide()){
+                }
+                else if(crupier.handSum(crupier.getHand()) < player.handSum(player.getHand()) && player.handSum(player.getHand()) < 21 && !player.isDivide()){
                     System.out.println("\nEl jugador gana... Desea seguir jugando? s/n");
                     player.win1();
                     while (!exit) {
@@ -279,7 +288,8 @@ public class BlackJack {
                                 break;
                         }
                     }
-                }else if(crupier.handSum(crupier.getHand()) > player.handSum(player.getHand2()) && crupier.handSum(crupier.getHand()) <= 21 && player.isDivide()){
+                }
+                else if(crupier.handSum(crupier.getHand()) > player.handSum(player.getHand2()) && crupier.handSum(crupier.getHand()) <= 21 && player.isDivide()){
                     System.out.println("\nEl jugador pierde en la Mano 2... Desea seguir jugando? s/n");
                     player.lose2();
                     while (!exit) {
@@ -297,7 +307,8 @@ public class BlackJack {
                                 break;
                         }
                     }
-                }else if(crupier.handSum(crupier.getHand()) > player.handSum(player.getHand2()) && crupier.handSum(crupier.getHand()) > player.handSum(player.getHand()) && crupier.handSum(crupier.getHand()) <= 21 && player.isDivide()){
+                }
+                else if(crupier.handSum(crupier.getHand()) > player.handSum(player.getHand2()) && crupier.handSum(crupier.getHand()) > player.handSum(player.getHand()) && crupier.handSum(crupier.getHand()) <= 21 && player.isDivide()){
                     System.out.println("\nEl jugador pierde en ambas Manos... Desea seguir jugando? s/n");
                     player.lose2();
                     player.lose1();
@@ -316,7 +327,8 @@ public class BlackJack {
                                 break;
                         }
                     }
-                }else if(crupier.handSum(crupier.getHand()) > player.handSum(player.getHand()) && crupier.handSum(crupier.getHand()) <= 21 && !player.isDivide()){
+                }
+                else if(crupier.handSum(crupier.getHand()) > player.handSum(player.getHand()) && crupier.handSum(crupier.getHand()) <= 21 && !player.isDivide()){
                     System.out.println("\nEl jugador pierde... Desea seguir jugando? s/n");
                     player.lose1();
                     while (!exit) {
@@ -355,7 +367,8 @@ public class BlackJack {
                                 break;
                         }
                     }
-                }else if(player.handSum(player.getHand2()) > 21 && player.isDivide()){
+                }
+                else if(player.handSum(player.getHand2()) > 21 && player.isDivide()){
                     System.out.println("\nEl jugador pierde en la Mano 2... Desea seguir jugando? s/n");
                     player.lose2();
                     while (!exit) {
@@ -373,7 +386,8 @@ public class BlackJack {
                                 break;
                         }
                     }
-                }else if(player.handSum(player.getHand2()) > 21 && player.handSum(player.getHand()) > 21 && player.isDivide()){
+                }
+                else if(player.handSum(player.getHand2()) > 21 && player.handSum(player.getHand()) > 21 && player.isDivide()){
                     System.out.println("\nEl jugador pierde en ambas Manos... Desea seguir jugando? s/n");
                     player.lose2();
                     player.lose1();
@@ -392,7 +406,8 @@ public class BlackJack {
                                 break;
                         }
                     }
-                }else if(player.handSum(player.getHand()) > 21 && !player.isDivide()){
+                }
+                else if(player.handSum(player.getHand()) > 21 && !player.isDivide()){
                     System.out.println("\nEl jugador pierde... Desea seguir jugando? s/n");
                     player.lose1();
                     while (!exit) {
@@ -431,7 +446,8 @@ public class BlackJack {
                                 break;
                         }
                     }
-                }else if(player.handSum(player.getHand2()) == crupier.handSum(crupier.getHand()) && player.isDivide()){
+                }
+                else if(player.handSum(player.getHand2()) == crupier.handSum(crupier.getHand()) && player.isDivide()){
                     System.out.println("\nEmpate en la mano 2... Desea seguir jugando? s/n");
                     player.empate2();
                     while (!exit) {
@@ -449,7 +465,8 @@ public class BlackJack {
                                 break;
                         }
                     }
-                }else if(player.handSum(player.getHand()) == crupier.handSum(crupier.getHand()) && player.handSum(player.getHand2()) == crupier.handSum(crupier.getHand()) && player.isDivide()){
+                }
+                else if(player.handSum(player.getHand()) == crupier.handSum(crupier.getHand()) && player.handSum(player.getHand2()) == crupier.handSum(crupier.getHand()) && player.isDivide()){
                     System.out.println("\nEmpate en ambas manos... Desea seguir jugando? s/n");
                     player.empate1();
                     player.empate2();
@@ -468,7 +485,8 @@ public class BlackJack {
                                 break;
                         }
                     }
-                }else{
+                }
+                else{
                     if(player.handSum(player.getHand()) == crupier.handSum(crupier.getHand()) && !player.isDivide()){
                         System.out.println("\nEmpate... Desea seguir jugando? s/n");
                         player.empate1();
@@ -495,7 +513,8 @@ public class BlackJack {
                 player.getHand().clear();
                 player.getHand2().clear();
                 crupier.getHand().clear();
-            }else{
+            }
+            else{
                 player.getHand().clear();
                 crupier.getHand().clear();
             }
