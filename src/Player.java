@@ -3,15 +3,15 @@ import java.util.List;
 
 public class Player {
 
+    private List<Deck.Card> hand = new ArrayList<>();
+    private List<Deck.Card> hand2 = new ArrayList<>();
     private Deck deck;
     private String alias;
     private int chips;
     private int bet1;
     private int bet2;
-    private boolean Divide = false;
-    private List<Deck.Card> hand = new ArrayList<>();
-    private List<Deck.Card> hand2 = new ArrayList<>();
     private final int MINIMUM_BET = 5;
+    private boolean Divide = false;
 
 
     public Player(String alias, int chips) {
@@ -129,6 +129,11 @@ public class Player {
         int valor = 0;
         for (int i = 0; i < hand.size(); i++) {
             valor += hand.get(i).getValor();
+        }
+        for (int i = 0; i < hand.size(); i++) {
+            if(hand.get(i).getValor()==11 && valor>21){
+                valor -= 10;
+            }
         }
         return valor;
     }
